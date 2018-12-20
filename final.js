@@ -60,7 +60,10 @@ function myFunction(data) {
           //incident details
           for (y = 0; y < data.result.incidents[x].messages.length; y++) {
 
-            if (z === x) {
+// var max = data.result.incidents[x].messages.length
+// console.log(max)
+
+            if ((z == 0 && z == x && y != 0) || (z == x && y != 0)) {
               //get incident title
               console.log("z" + z)
               var incidentTopic = data.result.incidents[z].name
@@ -68,6 +71,7 @@ function myFunction(data) {
 
               //get time of post and convert
               console.log("x" + x)
+
               var updateMessageTime = data.result.incidents[x].messages[y].datetime
               var convertedDate = new Date(updateMessageTime);
               console.log(convertedDate)
