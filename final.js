@@ -15,7 +15,7 @@ request.onreadystatechange = function(e) {
 }
 
 // request.open('GET', 'https://4277980205320394.hostedstatus.com/1.0/status/575f0f606826303142000510')
-request.open('GET', 'http://test.dreamhostexample.com/triple.json')
+request.open('GET', 'http://test.dreamhostexample.com/quad.json')
 // request.open('GET', 'http://test.dreamhostexample.com/operational.json')
 request.send()
 
@@ -58,45 +58,41 @@ function myFunction(data) {
         //individual incidents
         for (x = 0; x < data.result.incidents.length; x++) {
           //incident details
+          var max = (data.result.incidents[x].messages.length - 1) //subtract 1 for array
           for (y = 0; y < data.result.incidents[x].messages.length; y++) {
-            var max = data.result.incidents[x].messages.length
 
-            // if ((z == 0 && z == x && y != 0) || (z == x && y == max)) {
-            var current  = data.result.incidents[x].messages.length
-              if (z == x && current == max) {
+            // if ((z == 0 && z == x && y != 0) || (z == x && y != 0 && (y != max - 1))) {
+            if (z == x && y == max) {
+
+
 
 
               //Print message text first
               //get message
               console.log("y" + y)
-              console.log(max)
+              console.log("max is " + max)
               var updateMessageText = data.result.incidents[x].messages[y].details
               console.log(updateMessageText)
-
               var container = document.getElementById('container'),
                 textString = '',
                 textClass = 'updatedStatus';
-
-
               var incText = document.createElement("p");
               incText.innerHTML = updateMessageText
-
               textString += '<div class="' + textClass + '"></div>';
               container.insertAdjacentHTML('afterbegin', textString);
-
               //prints title to page
               var textDiv = document.querySelector('.updatedStatus');
               textDiv.innerHTML += updateMessageText
 
 
+
               //print time second
               //get time of post and convert
               console.log("x" + x)
-              console.log(max)
+              console.log("max is " + max)
               var updateMessageTime = data.result.incidents[x].messages[y].datetime
               var convertedDate = new Date(updateMessageTime);
               console.log(convertedDate)
-
               //Create div for each incident Topic title
               var timeString = '',
                 timeClass = 'updatedTime';
@@ -109,18 +105,17 @@ function myFunction(data) {
               timeDiv.innerHTML += convertedDate
 
 
+
               //print topic 3rd
               //get incident title
               console.log("z" + z)
-              console.log(max)
+              console.log("max is " + max)
               var incidentTopic = data.result.incidents[z].name
               console.log(incidentTopic)
-
               //Create div for each incident Topic title
               //var container = document.getElementById('container'),
               var topicString = '',
                 topicClass = 'incidentTopic';
-
               var incTopic = document.createElement("p");
               incTopic.innerHTML = incidentTopic
               topicString += '<div class="' + topicClass + '"></div>';
