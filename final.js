@@ -60,25 +60,70 @@ function myFunction(data) {
           //incident details
           for (y = 0; y < data.result.incidents[x].messages.length; y++) {
 
-// var max = data.result.incidents[x].messages.length
-// console.log(max)
-
             if ((z == 0 && z == x && y != 0) || (z == x && y != 0)) {
+
+//print topic 3rd
               //get incident title
-              console.log("z" + z)
+              // console.log("z" + z)
               var incidentTopic = data.result.incidents[z].name
               console.log(incidentTopic)
+              //Create div for each incident Topic title
+              var container = document.getElementById('container'),
+              topicString = '',
+              topicClass = 'incidentTopic';
+              var incTopic = document.createElement("p");
+              incTopic.innerHTML = incidentTopic
+              topicString += '<div class="' + topicClass + '"></div>';
+              container.insertAdjacentHTML('afterbegin', topicString);
+              //prints title to page
+              var topicDiv = document.querySelector('.incidentTopic');
+              topicDiv.innerHTML += incidentTopic
 
+
+//print time second
               //get time of post and convert
-              console.log("x" + x)
-
+              // console.log("x" + x)
               var updateMessageTime = data.result.incidents[x].messages[y].datetime
               var convertedDate = new Date(updateMessageTime);
               console.log(convertedDate)
+              //Create div for each incident Topic title
+              var timeString = '',
+              timeClass = 'updatedTime';
+              var incTime = document.createElement("p");
+              incTime.innerHTML = convertedDate
+              timeString += '<div class="' + timeClass + '"></div>';
+              container.insertAdjacentHTML('afterbegin', timeString);
+              //prints title to page
+              var timeDiv = document.querySelector('.updatedTime');
+              timeDiv.innerHTML += convertedDate
+
+
+
+
+//Print message text first
               //get message
-              console.log("y" + y)
+              // console.log("y" + y)
               var updateMessageText = data.result.incidents[x].messages[y].details
               console.log(updateMessageText)
+
+              var textString = '',
+              textClass = 'updatedStatus';
+
+              var incText = document.createElement("p");
+              incText.innerHTML = updateMessageText
+
+              textString += '<div class="' + textClass + '"></div>';
+              container.insertAdjacentHTML('afterbegin', textString);
+
+              //prints title to page
+              var textDiv = document.querySelector('.updatedStatus');
+              textDiv.innerHTML += updateMessageText
+
+
+
+
+
+
             }
           }
 
