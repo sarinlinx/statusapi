@@ -52,61 +52,92 @@ function myFunction(data) {
 
 
     } else if (data.result.status[i].status_code != 100) {
-      for (z = 0; z < data.result.incidents.length; z++) {
+      for (z = 0; z < data.result.incidents.length -1; z++) {
 
         //get incident title
         var incidentTopic = data.result.incidents[z].name
         // document.getElementById("incidentTopic").innerHTML = incidentTopic
+console.log(incidentTopic)
 
 
-
-        //incident title
+        //Create div for each incident Topic title
         var container = document.getElementById('container'),
         topicString = '',
         topicClass = 'incidentTopic';
 
         var incTopic = document.createElement("p");
         incTopic.innerHTML = incidentTopic
+
         topicString += '<div class="' + topicClass + '"></div>';
         container.insertAdjacentHTML('afterbegin', topicString);
-        // document.querySelector(".incidentTopic").appendChild(incidentTopic);
+        //prints title to page
         var topicDiv = document.querySelector('.incidentTopic');
         topicDiv.innerHTML += incidentTopic
 
 
-        //loop through updates of incident
-        for (x = 0; x < data.result.incidents.length; x++) {
-          for (y = 0; y < data.result.incidents[x].messages.length; y++) {
 
-            //get time and convert
+
+
+
+        //total amount of incidents
+        //this causes everthing to loop twice which is needed
+        //otherwise the other incidents would not be printed
+        for (x = 0; x < data.result.incidents.length; x++) {
+
+          //total amount of messages in all incidents
+
+          for (y = 0; y < data.result.incidents[x].messages.length; y++) {
+if (y == data.result.incidents[x].messages.length -1) {
+console.log("x" + x)
+console.log("y" + y)
+           var max = data.result.incidents[x].messages.length
+
+            //get time of post and convert
+
             var updateMessageTime = data.result.incidents[x].messages[y].datetime
             var convertedDate = new Date(updateMessageTime);
+
+console.log(convertedDate)
             //get message
             var updateMessageText = data.result.incidents[x].messages[y].details
-
-            //console.log(incidentTopic)
-
-
-
-
-
-
-
+console.log(updateMessageText)
+}
             //create new elements
-            if (y < data.result.incidents[x].messages.length) {
-
+            //if (y < data.result.incidents[x].messages.length) {
 
 /*
+              var h = document.createElement("p");
+              var t = document.createTextNode(convertedDate);
+              h.appendChild(t);
+              document.body.appendChild(h);
+
+              var h2 = document.createElement("p");
+              var t2 = document.createTextNode(updateMessageText);
+              h2.appendChild(t);
+              document.body.appendChild(h2);
+*/
+
+
+              /*
               var container = document.getElementById('container'),
                 timeString = '',
-                timeClass = 'updatedTime',
-                topicString = '',
-                topicClass = 'incidentTopic';
+                timeClass = 'updatedTime';
 
+                var postTime = document.createElement("p");
+                postTime.innerHTML = updateMessageTime
 
-              topicString += '<div class="' + topicClass + '"></div>';
-              container.insertAdjacentHTML('afterbegin', topicString);
+                timeString += '<div class="' + timeClass + '"></div>';
+                container.insertAdjacentHTML('afterbegin', timeString);
+                //prints title to page
+                var timeDiv = document.querySelector('.updatedTime');
+                timeDiv.innerHTML += updatedTime
 */
+
+
+
+//              topicString += '<div class="' + topicClass + '"></div>';
+//              container.insertAdjacentHTML('afterbegin', topicString);
+
 
 /*
               timeString += '<div class="' + timeClass + '"></div>';
@@ -145,4 +176,4 @@ function myFunction(data) {
 
 
   } //close for loop
-} //close function
+//} //close function
