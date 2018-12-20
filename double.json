@@ -272,24 +272,20 @@
 
 
     "incidents": [{
-        zzzzzzzzzzzzzzz
         "name": "DreamPress Service Degradation",
         "_id": "5c1a633c772e305a705f12ba",
         "datetime_open": "2018-12-19T15:26:00.000Z",
-
         "messages": [{
-             yyyyyyyyyyyyyyyy
             "details": "Our  Engineers are investigating an issue resulting in degraded performance or intermittent connections within a specific cluster of DreamPress instances. Our teams are working to identify the culprit and will update this post as we have more information.",
             "state": 100,
             "status": 400,
-            xxxxxxxxxxxxxxxx
             "datetime": "2018-12-19T15:26:00.000Z"
           },
           {
             "details": "DreamPress DONE!.",
             "state": 100,
             "status": 400,
-            "datetime": "2018-12-19T16:02:35.381Z"
+            "datetime": "2018-12-19T12:12:12.381Z"
           }
         ],
         "containers_affected": [{
@@ -319,7 +315,7 @@
             "details": "Discussion lists Fixed",
             "state": 100,
             "status": 400,
-            "datetime": "2018-12-19T16:02:35.381Z"
+            "datetime": "2018-12-19T11:11:11.381Z"
           }
         ],
         "containers_affected": [{
@@ -331,6 +327,52 @@
           "_id": "575f18124119092e42000056"
         }]
       }
+
+
+
+
+
+
+
+      {
+        "name": "Remixer not working",
+        "_id": "5c1a633c772e305a705f12ba",
+        "datetime_open": "2018-11-119T15:26:00.000Z",
+        "messages": [{
+            "details": "stuffs going on with Discussion lists",
+            "state": 100,
+            "status": 400,
+            "datetime": "2018-15-15T15:26:00.000Z"
+          },
+          {
+            "details": "Discussion lists Fixed",
+            "state": 100,
+            "status": 400,
+            "datetime": "2018-12-19T11:11:11.381Z"
+          },
+          {
+            "details": "Remixer is Fixed",
+            "state": 100,
+            "status": 400,
+            "datetime": "2018-15-15T11:11:11.381Z"
+          }
+        ],
+        "containers_affected": [{
+          "name": "Core Services",
+          "_id": "575f0ffc543e1694450005be"
+        }],
+        "components_affected": [{
+          "name": "DreamPress 2",
+          "_id": "575f18124119092e42000056"
+        }]
+      }
+
+
+
+
+
+
+
     ],
     "maintenance": {
       "active": [],

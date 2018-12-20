@@ -15,7 +15,7 @@ request.onreadystatechange = function(e) {
 }
 
 // request.open('GET', 'https://4277980205320394.hostedstatus.com/1.0/status/575f0f606826303142000510')
-request.open('GET', 'http://test.dreamhostexample.com/double.json')
+request.open('GET', 'http://test.dreamhostexample.com/triple.json')
 // request.open('GET', 'http://test.dreamhostexample.com/operational.json')
 request.send()
 
@@ -59,20 +59,22 @@ function myFunction(data) {
         for (x = 0; x < data.result.incidents.length; x++) {
           //incident details
           for (y = 0; y < data.result.incidents[x].messages.length; y++) {
+            var max = data.result.incidents[x].messages.length
 
-            if ((z == 0 && z == x && y != 0) || (z == x && y != 0)) {
-
-
+            // if ((z == 0 && z == x && y != 0) || (z == x && y == max)) {
+            var current  = data.result.incidents[x].messages.length
+              if (z == x && current == max) {
 
 
               //Print message text first
               //get message
-              // console.log("y" + y)
+              console.log("y" + y)
+              console.log(max)
               var updateMessageText = data.result.incidents[x].messages[y].details
               console.log(updateMessageText)
 
-var container = document.getElementById('container'),
-               textString = '',
+              var container = document.getElementById('container'),
+                textString = '',
                 textClass = 'updatedStatus';
 
 
@@ -89,7 +91,8 @@ var container = document.getElementById('container'),
 
               //print time second
               //get time of post and convert
-              // console.log("x" + x)
+              console.log("x" + x)
+              console.log(max)
               var updateMessageTime = data.result.incidents[x].messages[y].datetime
               var convertedDate = new Date(updateMessageTime);
               console.log(convertedDate)
@@ -108,13 +111,14 @@ var container = document.getElementById('container'),
 
               //print topic 3rd
               //get incident title
-              // console.log("z" + z)
+              console.log("z" + z)
+              console.log(max)
               var incidentTopic = data.result.incidents[z].name
               console.log(incidentTopic)
 
               //Create div for each incident Topic title
               //var container = document.getElementById('container'),
-                var topicString = '',
+              var topicString = '',
                 topicClass = 'incidentTopic';
 
               var incTopic = document.createElement("p");
@@ -125,7 +129,7 @@ var container = document.getElementById('container'),
               var topicDiv = document.querySelector('.incidentTopic');
               topicDiv.innerHTML += incidentTopic
 
-
+              document.getElementById("further-status-details").style.display = "block";
             }
           }
 
